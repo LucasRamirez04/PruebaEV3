@@ -1,0 +1,41 @@
+services:
+  # 1. Eureka Server
+  - type: web
+    name: eureka-server
+    env: docker
+    plan: free
+    region: oregon
+    directory: ./eureka-server
+    envVars:
+      - key: PORT
+        value: 8761
+
+  # 2. Microservicio de Pedidos
+  - type: web
+    name: mi-microservicio-pedido
+    env: docker
+    plan: free
+    region: oregon
+    directory: ./microservicio-pedido
+    envVars:
+      - key: PORT
+        value: 8083
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: EUREKA_URL
+        value: https://eureka-server.onrender.com/eureka/
+
+  # 3. API Gateway
+  - type: web
+    name: api-gateway
+    env: docker
+    plan: free
+    region: oregon
+    directory: ./api-gateway
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: EUREKA_URL
+        value: https://eureka-server.onrender.com/eureka/
