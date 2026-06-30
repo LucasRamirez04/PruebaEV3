@@ -1,10 +1,9 @@
 server:
-  port: ${PORT:8080}
+  port: 8080
 
 spring:
   application:
     name: api-gateway
-
   cloud:
     gateway:
       server:
@@ -17,13 +16,6 @@ spring:
               filters:
                 - StripPrefix=1
 
-            - id: microservicio-pago
-              uri: lb://MICROSERVICIO-PAGO
-              predicates:
-                - Path=/microservicio-pago/**
-              filters:
-                - StripPrefix=1
-
 logging:
   level:
     org.springframework.cloud.gateway: TRACE
@@ -32,10 +24,6 @@ logging:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_URL}
-    fetch-registry: true
-    register-with-eureka: true
-
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
   instance:
-    hostname: ${RENDER_EXTERNAL_HOSTNAME}
-    prefer-ip-address: false
+    prefer-ip-address: true
