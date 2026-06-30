@@ -11,14 +11,14 @@ services:
     env: docker
     plan: free
     region: oregon
-    rootDir: ./pedido # <--- ¡AQUÍ ESTÁ EL CAMBIO!
+    rootDir: ./pedido
     envVars:
       - key: PORT
         value: 8083
       - key: SPRING_PROFILES_ACTIVE
         value: prod
       - key: EUREKA_URL
-        value: ${eureka_server_url}/eureka/
+        value: https://eureka-server-mg8f.onrender.com/eureka/
 
   - type: web
     name: api-gateway
@@ -32,4 +32,4 @@ services:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
       - key: EUREKA_URL
-        value: ${eureka_server_url}/eureka/
+        value: https://eureka-server-mg8f.onrender.com/eureka/
