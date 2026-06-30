@@ -2,14 +2,19 @@ server:
   port: ${PORT}
 
 spring:
+  application:
+    name: microservicio-pago
+
   datasource:
     url: jdbc:h2:mem:db_pago_prod;DB_CLOSE_DELAY=-1;MODE=MySQL
     driver-class-name: org.h2.Driver
     username: sa
     password: ""
+
   jpa:
     hibernate:
       ddl-auto: update
+
   flyway:
     enabled: false
 
@@ -21,11 +26,14 @@ eureka:
     register-with-eureka: true
     eureka-server-connect-timeout-seconds: 5
     eureka-server-read-timeout-seconds: 5
+
   instance:
-    preferIpAddress: true
+    hostname: ${RENDER_EXTERNAL_HOSTNAME}
+    preferIpAddress: false
+    nonSecurePort: ${PORT}
 
 pedido-service:
-  url: "https://mi-microservicio-pedido.onrender.com"
+  url: "https://microservicio-pedido.onrender.com"
 
 envio-service:
   url: ""

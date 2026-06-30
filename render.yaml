@@ -7,7 +7,7 @@ services:
     rootDir: ./eureka-server
 
   - type: web
-    name: mi-microservicio-pedido
+    name: microservicio-pedido
     env: docker
     plan: free
     region: oregon

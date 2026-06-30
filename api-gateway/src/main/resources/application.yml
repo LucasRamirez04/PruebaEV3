@@ -4,24 +4,25 @@ server:
 spring:
   application:
     name: api-gateway
+
   cloud:
     gateway:
-      routes:
-        # Ruta para Pedido
-        - id: microservicio-pedido
-          uri: lb://MICROSERVICIO-PEDIDO
-          predicates:
-            - Path=/microservicio-pedido/**
-          filters:
-            - StripPrefix=1
+      server:
+        webflux:
+          routes:
+            - id: microservicio-pedido
+              uri: lb://MICROSERVICIO-PEDIDO
+              predicates:
+                - Path=/microservicio-pedido/**
+              filters:
+                - StripPrefix=1
 
-        # NUEVA Ruta para Pago
-        - id: microservicio-pago
-          uri: lb://MICROSERVICIO-PAGO
-          predicates:
-            - Path=/microservicio-pago/**
-          filters:
-            - StripPrefix=1
+            - id: microservicio-pago
+              uri: lb://MICROSERVICIO-PAGO
+              predicates:
+                - Path=/microservicio-pago/**
+              filters:
+                - StripPrefix=1
 
 logging:
   level:
@@ -32,9 +33,9 @@ eureka:
   client:
     service-url:
       defaultZone: ${EUREKA_URL}
-    fetch-registry: true # OBLIGATORIO: El Gateway debe conocer dónde están los demás
+    fetch-registry: true
     register-with-eureka: true
+
   instance:
-    hostname: ${RENDER_EXTERNAL_HOSTNAME:localhost} # OBLIGATORIO en Render
-    prefer-ip-address: false # OBLIGATORIO: Falso en Render
-    non-secure-port-enabled: true
+    hostname: ${RENDER_EXTERNAL_HOSTNAME}
+    prefer-ip-address: false
