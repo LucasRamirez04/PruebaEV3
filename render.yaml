@@ -1,19 +1,17 @@
 services:
-  # 1. Eureka Server
   - type: web
     name: eureka-server
     env: docker
     plan: free
     region: oregon
-    rootDir: ./eureka-server # <-- Corregido a rootDir
+    rootDir: ./eureka-server
 
-  # 2. Microservicio de Pedidos
   - type: web
     name: mi-microservicio-pedido
     env: docker
     plan: free
     region: oregon
-    rootDir: ./microservicio-pedido # <-- Corregido a rootDir
+    rootDir: ./microservicio-pedido
     envVars:
       - key: PORT
         value: 8083
@@ -22,13 +20,12 @@ services:
       - key: EUREKA_URL
         value: ${eureka_server_url}/eureka/
 
-  # 3. API Gateway
   - type: web
     name: api-gateway
     env: docker
     plan: free
     region: oregon
-    rootDir: ./api-gateway # <-- Corregido a rootDir
+    rootDir: ./api-gateway
     envVars:
       - key: PORT
         value: 8080
