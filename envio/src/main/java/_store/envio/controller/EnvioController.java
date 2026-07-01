@@ -33,7 +33,7 @@ public class EnvioController {
 
     @Operation(summary = "Listar todos los envíos registrados en el sistema")
     @ApiResponse(responseCode = "200", description = "Listado de envíos")
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<CollectionModel<EntityModel<Envio>>> listarEnvios() {
         List<EntityModel<Envio>> envios = envioService.listarTodos().stream()
                 .map(envioModelAssembler::toModel)

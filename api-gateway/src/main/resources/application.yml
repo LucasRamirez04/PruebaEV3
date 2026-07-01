@@ -50,6 +50,13 @@ spring:
                 - Path=/microservicio-envio/**
               filters:
                 - StripPrefix=1
+
+            - id: microservicio-resena
+              uri: lb://MICROSERVICIO-RESENA
+              predicates:
+                - Path=/microservicio-resena/**
+              filters:
+                - StripPrefix=1
 logging:
   level:
     org.springframework.cloud.gateway: TRACE
