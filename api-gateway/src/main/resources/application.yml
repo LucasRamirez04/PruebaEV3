@@ -30,6 +30,13 @@ spring:
               filters:
                 - StripPrefix=1
 
+            - id: microservicio-cliente
+              uri: lb://MICROSERVICIO-CLIENTE
+              predicates:
+                - Path=/microservicio-cliente/**
+              filters:
+                - StripPrefix=1
+
 logging:
   level:
     org.springframework.cloud.gateway: TRACE

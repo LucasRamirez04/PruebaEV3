@@ -61,3 +61,18 @@ services:
         value: prod
       - key: EUREKA_URL
         value: https://eureka-server-mg8f.onrender.com/eureka/
+  
+  # NUEVO: Microservicio de cliente
+  - type: web
+    name: microservicio-inventario
+    env: docker
+    plan: free
+    region: oregon
+    rootDir: ./cliente
+    envVars:
+      - key: PORT
+        value: 8081
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: EUREKA_URL
+        value: https://eureka-server-mg8f.onrender.com/eureka/
