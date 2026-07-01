@@ -136,3 +136,18 @@ services:
         value: prod
       - key: EUREKA_URL
         value: https://eureka-server-mg8f.onrender.com/eureka/
+  
+    # NUEVO: Microservicio de notificacion
+  - type: web
+    name: microservicio-notificacion
+    env: docker
+    plan: free
+    region: oregon
+    rootDir: ./notificacion
+    envVars:
+      - key: PORT
+        value: 8086
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: EUREKA_URL
+        value: https://eureka-server-mg8f.onrender.com/eureka/
