@@ -121,3 +121,18 @@ services:
         value: prod
       - key: EUREKA_URL
         value: https://eureka-server-mg8f.onrender.com/eureka/
+    
+  # NUEVO: Microservicio de devolucion
+  - type: web
+    name: microservicio-devolucion
+    env: docker
+    plan: free
+    region: oregon
+    rootDir: ./devolucion
+    envVars:
+      - key: PORT
+        value: 8090
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: EUREKA_URL
+        value: https://eureka-server-mg8f.onrender.com/eureka/

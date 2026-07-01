@@ -57,6 +57,14 @@ spring:
                 - Path=/microservicio-resena/**
               filters:
                 - StripPrefix=1
+            
+            - id: microservicio-devolucion
+              uri: lb://MICROSERVICIO-DEVOLUCION
+              predicates:
+                - Path=/microservicio-devolucion/**
+              filters:
+                - StripPrefix=1
+logging:
 logging:
   level:
     org.springframework.cloud.gateway: TRACE
