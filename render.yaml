@@ -64,7 +64,7 @@ services:
   
   # NUEVO: Microservicio de cliente
   - type: web
-    name: microservicio-inventario
+    name: microservicio-cliente
     env: docker
     plan: free
     region: oregon
