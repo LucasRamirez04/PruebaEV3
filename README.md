@@ -11,7 +11,7 @@
 | Nombre |
 |---|
 | Lucas Ramírez |
-| Javier Altamirano | 
+| Javier Alvarado | 
 | Franco Pacheco |
 | Lucas Pizarro | 
 | Nicolas Aravena | 
